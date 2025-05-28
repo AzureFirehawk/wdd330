@@ -1,16 +1,26 @@
-const countdown = document.querySelector('#countdown');
-const startButton = document.querySelector('#startbutton');
+document.addEventListener('DOMContentLoaded', () => {
+    const formElem = document.getElementById('formElem');
+    formElem.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(formElem);
+        formData.append('submitted', new Date());
 
-const input = document.querySelector('#input');
-
-startButton.addEventListener('click', () => {
-    // Clear any existing countdown
-    let count = 0;
-    const intervalId = setInterval(() => {
-        count += 1;
-        console.log(count);
-        if (count === 3) {
-            clearInterval(intervalId);
+        for (let key of formData.keys()) {
+            console.log(key, formData.get(key));
         }
-    }, 1000);
-});
+    })
+
+})
+
+formElem.onsubmit = async (e) => {
+    e.preventDefault();
+
+    let response = await fetch('/article/formdata/post/user', {
+        method: 'POST',
+        body: new FormData(formElem)
+    });
+
+    let result = await response.json();
+
+    alert(result.message);
+};
