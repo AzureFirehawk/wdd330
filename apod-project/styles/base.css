@@ -1,0 +1,23 @@
+:root {
+    /* Color Scheme */
+    --space-black: #0b0c10;
+    --nebula-blue: #1f2833;
+    --star-yellow: #ffcc00;
+    --planet-white: #ffffff;
+
+    /* Typography */
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Example usage */
+body {
+    background-color: var(--space-black);
+    color: var(--planet-white);
+    font-family: var(--font-body);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--star-yellow);
+}
