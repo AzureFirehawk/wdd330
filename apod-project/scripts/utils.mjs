@@ -102,7 +102,9 @@ export async function loadHeaderFooter() {
 
 export function toTitleCase(str) {
   return str
-    .split(" ")
+    .trim()
+    .toLowerCase()
+    .split(/\s+/)
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
